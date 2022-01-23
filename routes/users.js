@@ -4,9 +4,10 @@ const UserController = require('../controller/userController');
 
 
 // ALL Users
-router.get("/api/users", UserController.Allusers);
+router.get("/users", UserController.Allusers);
 
 
 // update user
-router.post("/api/user/update/:id", UserController.UpdateUsers);
+router.post("/update/:id", UserController.UpdateUsers);
   
+module.exports = router;

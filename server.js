@@ -7,9 +7,8 @@ dotenv.config();
 
 // router
 const auth = require("./routes/auth");
-const user = require("./routes/users");
 const post = require("./routes/posts");
-
+const user = require("./routes/users");
 
 
 // middleware
@@ -19,6 +18,10 @@ app.use(express.json());
 // connect database
 mongoose.connect(process.env.DB_CONNECT, () => console.log("connected to db"));
 
+// Route middlewares
+app.use("/api/user", auth);
+app.use("/api/post", post);
+app.use("/api", user);
 
 
 app.listen(5500, () => console.log("Server is running"));

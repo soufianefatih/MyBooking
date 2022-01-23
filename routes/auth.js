@@ -1,14 +1,14 @@
 const router = require("express").Router();
-const AuthController = require('../controller/authController');
-
+const User = require("../model/User");
+const jwt = require("jsonwebtoken");
+const authController = require("../controller/authController")
+// const {registerValidation} = require('../validation');
 
 // register
-router.post("/api/user/register", AuthController.registerUser);
-
-
+router.post("/register",authController.registerUser);
 
 // login
 
-router.post("/api/user/login",AuthController.loginUser);
+router.post("/login",authController.loginUser);
 
 module.exports = router;
