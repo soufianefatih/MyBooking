@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const verify = require('./virifyToken');
+const verify = require('../middlewares/virifyToken');
 
-router.get("/", verify,(req, res) => {
+router.get("/api/post", verify,(req, res) => {
   res.json({ posts: { title: "first post", desscription: "new post" } });
 });
 
