@@ -6,19 +6,21 @@ const HotelController = require('../controller/hotelController');
 
 
 
-// ALL Users
-router.get("/", UserController.Allusers);
+// ALL Hotels
+// router.get("/",HotelController.AllHotel);
 
 
-// update user
-router.put("/update/:id", UserController.UpdateUsers);
-// get one user
-router.get("/:id", UserController.OneUser);
-// delete user
-router.delete("delete/:id", UserController.DeleteUser);
+// update hotel
+router.put("/update/:id",HotelController.UpdateHotel);
+
+// get one hotelr
+// router.get("/:id", HotelController.OneHotel);
+
+// delete hotel
+router.delete("delete/:id", HotelController.DeleteHotel);
   
-// cretate user 
-router.post("/create", UserController.createUser);
+// cretate hotel 
+router.post("/create", HotelController.HotelCreate);
 
 
 module.exports = router;

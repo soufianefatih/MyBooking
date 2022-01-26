@@ -11,7 +11,7 @@ const verifyMidlewares = require('./middlewares/virifyToken');
 
 // router
 const auth = require("./routes/auth");
-// const post = require("./routes/posts");
+const hotel = require("./routes/hotel");
 const user = require("./routes/users",);
 
 
@@ -24,7 +24,7 @@ mongoose.connect(process.env.DB_CONNECT, () => console.log("connected to db"));
 
 // Route middlewares
 app.use("/api", auth);
-// app.use("/api/post", post);
+app.use("/api/hotel", hotel);
 app.use("/api/user",verifyMidlewares.virifylogin,verifyMidlewares.UserRole('admin'),user);
 
 
