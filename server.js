@@ -5,10 +5,14 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 
+// virification token / login
+const verifyMidlewares = require('./middlewares/virifyToken');
+
+
 // router
 const auth = require("./routes/auth");
-const post = require("./routes/posts");
-const user = require("./routes/users");
+// const post = require("./routes/posts");
+const user = require("./routes/users",);
 
 
 // middleware
@@ -19,9 +23,9 @@ app.use(express.json());
 mongoose.connect(process.env.DB_CONNECT, () => console.log("connected to db"));
 
 // Route middlewares
-app.use("/api/user", auth);
-app.use("/api/post", post);
-app.use("/api", user);
+app.use("/api", auth);
+// app.use("/api/post", post);
+app.use("/api/user",verifyMidlewares.virifylogin,verifyMidlewares.UserRole('admin'),user);
 
 
 app.listen(5500, () => console.log("Server is running"));

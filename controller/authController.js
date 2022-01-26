@@ -5,15 +5,11 @@ const jwt = require("jsonwebtoken");
 
 exports.registerUser = async (req, res) => {
     res.json(req.body);
-  
-    // validation data
-    // const {eroor} = registerValidation(req.body);
-    // if (eroor) {return res.status(400).send(eroor.details[0].message);}
-  
     const newUser = await User.create({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      role : 'client',
     });
   
     try {
@@ -40,7 +36,7 @@ exports.registerUser = async (req, res) => {
         if (err) {
           res.json({ message: "validate not correct" });
         }
-        res.send({ token });
+        res.send({token });
       });
   
       //  res.json({message: 'login '});

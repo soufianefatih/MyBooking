@@ -4,10 +4,18 @@ const UserController = require('../controller/userController');
 
 
 // ALL Users
-router.get("/users", UserController.Allusers);
+router.get("/", UserController.Allusers);
 
 
 // update user
-router.post("/update/:id", UserController.UpdateUsers);
+router.put("/update/:id", UserController.UpdateUsers);
+// get one user
+router.get("/:id", UserController.OneUser);
+// delete user
+router.delete("delete/:id", UserController.DeleteUser);
   
+// cretate user 
+router.post("/create", UserController.createUser);
+
+
 module.exports = router;
