@@ -1,6 +1,6 @@
 const Hotel = require("../model/Hotel");
 
-
+// create hotel
 exports.HotelCreate = async(req,res)=>{
 
   const newHotel = await Hotel.create({
@@ -8,7 +8,8 @@ exports.HotelCreate = async(req,res)=>{
      name : req.body.name,
      description: req.body.description,
      image : req.body.image,
-     start : req.body.start,
+     image_cover : req.body.image_cover,
+     star : req.body.star,
      status: req.body.status,
   });
   try {
@@ -17,6 +18,8 @@ exports.HotelCreate = async(req,res)=>{
     res.status(400).send("bad request");
   }
 };
+
+// update hotel
 
 exports.UpdateHotel = async (req, res) => {
     const hotels = await Hotel.findOneAndUpdate(
@@ -41,11 +44,11 @@ exports.UpdateHotel = async (req, res) => {
   };
 
 
-
+//  delete hotel
 
   exports.DeleteHotel = async (req, res) => { 
+    await Hotel.deleteOne({_id:req.params.id});
     try {
-        await Hotel.deleteOne(req.params.id);
     
         res.json('DELETE HOTEL');
       } catch (error) {

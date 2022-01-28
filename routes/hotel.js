@@ -17,7 +17,7 @@ router.put("/update/:id",HotelController.UpdateHotel);
 // router.get("/:id", HotelController.OneHotel);
 
 // delete hotel
-router.delete("delete/:id", HotelController.DeleteHotel);
+router.delete("/delete/:id", HotelController.DeleteHotel);
   
 // cretate hotel 
 router.post("/create", HotelController.HotelCreate);
